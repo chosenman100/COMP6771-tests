@@ -38,6 +38,14 @@ do
     echo "Done" 
 done
 
+if [ -x "${EXECUTABLE_PATH}_ref" ]; then
+    echo "Running fuzzer with default dict"
+
+    ./fuzzer.sh sameLength 100 dict-default.txt "$EXECUTABLE_PATH"
+    ./fuzzer.sh sourceIsDest 5 dict-default.txt "$EXECUTABLE_PATH"
+    ./fuzzer.sh random 5 dict-default.txt "$EXECUTABLE_PATH"
+fi
+
 # Cleanup everything.
 rm $OUT_EXEC_FILE
 rm $OUT_TEST_FILE
