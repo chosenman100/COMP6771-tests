@@ -41,8 +41,12 @@ done
 if [ -x "${EXECUTABLE_PATH}_ref" ]; then
     echo "Running fuzzer with default dict"
 
+    echo "Fuzzing with same length source and dest."
     ./fuzzer.sh sameLength 100 dict-default.txt "$EXECUTABLE_PATH"
+    echo "Fuzzing with same source and dest. Potential failures on correct code."
+    echo "See: http://webapps.cse.unsw.edu.au/webcms2/course/index.php?cid=2448&color=lavendar"
     ./fuzzer.sh sourceIsDest 5 dict-default.txt "$EXECUTABLE_PATH"
+    echo "Fuzzing with random words."
     ./fuzzer.sh random 5 dict-default.txt "$EXECUTABLE_PATH"
 fi
 
