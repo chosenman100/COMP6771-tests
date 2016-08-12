@@ -34,8 +34,8 @@ do
 
     # Run the test.
     $EXECUTABLE_PATH < "in-$TEST_CASE" > "$OUT_EXEC_FILE"
-    diff "$OUT_TEST_FILE" "$OUT_EXEC_FILE"
-    echo "Done" 
+    diff -b -B "$OUT_TEST_FILE" "$OUT_EXEC_FILE"
+    echo "Done"
 done
 
 if [ -x "${EXECUTABLE_PATH}_ref" ]; then

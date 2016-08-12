@@ -22,7 +22,7 @@ for N in $(seq ${2:-20}); do
     esac
 
     START=$(date +%s.%N | awk '{print int($1 * 1000)}')
-    diff -u <("$4"_ref <<< "$INPUT") <("$4" <<< "$INPUT") || (echo "Failed:"$'\n'"$INPUT"$'\n'; false)
+    diff -b -B -u <("$4"_ref <<< "$INPUT") <("$4" <<< "$INPUT") || (echo "Failed:"$'\n'"$INPUT"$'\n'; false)
     if (( $(date +%s.%N | awk '{print int($1 * 1000)}') - $START > 1000 )); then
         echo "Slow:"$'\n'"$INPUT"$'\n'
     fi
