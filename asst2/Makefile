@@ -1,16 +1,13 @@
-TEST_FILES := $(wildcard *.cpp)
-TEST_FILES := $(filter-out EuclideanVector.cpp, $(TEST_FILES))
+CPP_FILES := $(wildcard *.cpp)
+OBJ_FILES := $(CPP_FILES:.cpp=.o)
 
 all: EuclideanVectorTester
 
-EuclideanVectorTester: EuclideanVectorTester.o EuclideanVector.o
-	g++ -fsanitize=address EuclideanVectorTester.o EuclideanVector.o -o EuclideanVectorTester
+EuclideanVectorTester: $(OBJ_FILES) 
+	g++ -fsanitize=address -o $@ $^
 
-EuclideanVectorTester.o: EuclideanVectorTester.cpp EuclideanVector.h
-	g++ -std=c++14 -Wall -Werror -O2 -fsanitize=address -c $(TEST_FILES)
-
-EuclideanVector.o: EuclideanVector.cpp EuclideanVector.h
-	g++ -std=c++14 -Wall -Werror -O2 -fsanitize=address -c EuclideanVector.cpp
+%.o: %.cpp
+	g++ -std=c++14 -Wall -Werror -O2 -fsanitize=address -c -o $@ $<
 
 clean:
 	rm *o EuclideanVectorTester
