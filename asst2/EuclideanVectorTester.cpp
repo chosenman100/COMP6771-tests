@@ -5,6 +5,7 @@
 #include "MoveCopyOperatorTests.h"
 #include "MattTests.h"
 #include "NormCacheTest.h"
+#include "AccessTests.h"
 
 int main(int argc, char *argv[]) {
     std::cout << "Starting test suite.\n";
@@ -25,9 +26,13 @@ int main(int argc, char *argv[]) {
     norm_cache_tests();
     std::cout << "Passed norm caching test.\n";
 
-    std::cout << "Running Matt's tests\n";
+    std::cout << "running matt's tests\n";
     matt_tests();
-    std::cout << "Passed Matt's tests\n";
+    std::cout << "passed matt's tests\n";
+
+    std::cout << "Running access tests.\n";
+    access_tests();
+    std::cout << "Passed access tests.\n";
 
     std::cout << "All tests passed.\n";
 
