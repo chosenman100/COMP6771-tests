@@ -3,6 +3,7 @@
 #include "ConstructorTests.h"
 #include "ProvidedTests.h"
 #include "MoveCopyOperatorTests.h"
+#include "MattTests.h"
 
 int main(int argc, char *argv[]) {
     std::cout << "Starting test suite.\n";
@@ -18,6 +19,10 @@ int main(int argc, char *argv[]) {
     std::cout << "Running move and copy operator tests.\n";
     movecopyoperator_tests();
     std::cout << "Passed move and copy operator tests.\n";
+
+    std::cout << "Running Matt's tests\n";
+    matt_tests();
+    std::cout << "Passed Matt's tests\n";
 
     std::cout << "All tests passed.\n";
 
