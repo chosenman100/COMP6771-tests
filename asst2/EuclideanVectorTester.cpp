@@ -3,6 +3,7 @@
 #include "ConstructorTests.h"
 #include "ProvidedTests.h"
 #include "MoveCopyOperatorTests.h"
+#include "MattTests.h"
 #include "NormCacheTest.h"
 
 int main(int argc, char *argv[]) {
@@ -24,6 +25,9 @@ int main(int argc, char *argv[]) {
     norm_cache_tests();
     std::cout << "Passed norm caching test.\n";
 
+    std::cout << "Running Matt's tests\n";
+    matt_tests();
+    std::cout << "Passed Matt's tests\n";
 
     std::cout << "All tests passed.\n";
 
