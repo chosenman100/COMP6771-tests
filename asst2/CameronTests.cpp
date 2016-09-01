@@ -515,33 +515,4 @@ void cameron_tests() {
         os3 << d;
         assert(os3.str() == "[2 3 4]");
     }
-
-    // Testing very large dimensions
-    {
-        unsigned int max{(2^32) - 1};
-
-        evec::EuclideanVector a(max);
-        assert(a.getNumDimensions() == max);
-
-        evec::EuclideanVector b(max, static_cast<double>(max));
-        assert(b.getNumDimensions() == max);
-        for (unsigned int i{0}; i < max; i++) {
-            assert(b[i] == max);
-        }
-
-        // stress testing get euclideanVector
-        for (unsigned int i{0}; i < max; i++) {
-            b.getEuclideanNorm();
-        }
-    }
-
-    // Testing massive container with large EuclideanVectors
-    {
-        unsigned int max = (2^32) - 1;
-        std::vector<evec::EuclideanVector> vectors{};
-        for (unsigned int i{0}; i < max; i++) {
-            vectors.push_back(evec::EuclideanVector(max, static_cast<double>(max)));
-        }
-        assert(vectors.size() == max);
-    }
 }
